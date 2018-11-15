@@ -1,0 +1,101 @@
+<link rel="stylesheet" type="text/css" href="_pub_scripts/webuploader/uploader.css">
+<div id="uploader" class="wu-example">
+    <div class="queueList">
+        <div id="dndArea" class="placeholder">
+            <div id="filePicker"></div>
+            <p>或将照片拖到这里，单次最多可选300张</p>
+        </div>
+    </div>
+    <div class="statusBar" style="display:none;">
+        <div class="progress">
+            <span class="text">0%</span>
+            <span class="percentage"></span>
+        </div>
+        <div class="info"></div>
+        <div class="btns">
+            <div id="filePicker2"></div>
+            <div class="uploadBtn">开始上传</div>
+        </div>
+    </div>
+</div>
+<table id="atta-list" class="table table-striped">
+    <volist name="medias" id="v">
+        <tr>
+            <td><a class="screenshot" rel="/public/uploads/{$v.path}" title="{$v.title}">{$v.title}</a></td>
+            <td>{$v.size}</td>
+            <td >{$v.ext}</td>
+            <td width="50">
+                <a class="del" href="/admin/media/del?id={$v.id}"><span class="icon-trash"></span></a>
+                <a target="_blank" href="/admin/media/write?id={$v.id}"><span class="icon-pencil"></span></a>
+                <a href="#"><span class="icon-hand-down"></span></a>
+            </td>
+        </tr>
+    </volist>
+</table>
+<script type="text/javascript" src="_pub_scripts/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="_pub_scripts/webuploader/uploader.js"></script>
+<style>
+    #screenshot {
+        position:absolute;
+        border:1px solid #ccc;
+        background:#333;
+        padding:5px;
+        display:none;
+        color:#fff;
+        z-index: 1300;
+    }
+    #screenshot img {
+        max-width: 300px;
+    }
+</style>
+<script>
+    $(function() {
+        function screenshotPreview() {
+            /* CONFIG */
+            xOffset = 10;
+            yOffset = 30;
+            /* END CONFIG *//*//$("a.screenshot")*/
+            $("#atta-list").on("mouseover mouseout","a.screenshot",function(e){
+                if(e.type == "mouseover"){
+                    //鼠标悬浮
+                    this.t = this.title;
+                    this.title = "";
+                    var c = (this.t != "") ? "<br/>" + this.t : "";
+                    $("body").append("<p id='screenshot'><img src='"+ this.rel +"' alt='url preview' />"+ c +"</p>");
+                    $("#screenshot")
+                        .css("top",(e.pageY - xOffset) + "px")
+                        .css("left",(e.pageX + yOffset) + "px")
+                        .fadeIn("fast");
+                }
+                else if(e.type == "mouseout"){
+                    //鼠标离开
+                    this.title = this.t;
+                    $("#screenshot").remove();
+                }
+            });
+
+            $("a.screenshot").mousemove(function(e){
+                $("#screenshot").css("top",(e.pageY - xOffset) + "px").css("left",(e.pageX + yOffset) + "px");
+            });
+        }
+        screenshotPreview();
+        //使用
+        $("#atta-list").on('click',"a.screenshot",function(e){
+            if(typeof insert === "function") {
+                insert(this.rel,this.t);
+            }
+        })
+        //删除
+        $("#atta-list").on('click',"a.del",function(e){
+
+            if(!confirm('你确定要删除此文件吗？')) {
+                return false;
+            }
+            alert(this.href)
+            return false;
+        })
+        $('a[data-toggle="tab"].upload-refresh').on('shown', function (e) {
+            uploader.refresh()
+        })
+    });
+</script>

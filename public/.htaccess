@@ -1,0 +1,11 @@
+Options +FollowSymlinks -Multiviews
+RewriteEngine On
+
+#访问的路径不是一个目录时RewriteRule才能生效
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#访问的路径不是一个文件时RewriteRule才能生效
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+RewriteRule ^(.*)$ index.php?/$1 [L]

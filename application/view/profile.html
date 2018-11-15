@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="header" />
+</head>
+<body>
+
+<include file="navbar" />
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <include file="menu" />
+            </div><!--/.span3-->
+
+            <div class="span9">
+                <div class="content">
+
+                    <div class="module">
+                        <div class="module-head">
+                            <h3>个人资料</h3>
+                        </div>
+                        <div class="module-body">
+                            {$alert}
+                            <form action="{$action}" method="post" class="form-horizontal row-fluid">
+                                <div class="control-group">
+                                    <label>昵称</label>
+                                    <input type="text" name="screenName" class="span5" value="{$auth.screenName|default=$auth.user}">
+                                    <span class="help-block">用户昵称可以与用户名不同, 用于前台显示.</span>
+                                    <span class="help-block">如果你将此项留空, 将默认使用用户名.</span>
+                                </div>
+
+                                <div class="control-group">
+                                    <label>电子邮箱地址</label>
+                                    <input type="text" name="mail" class="span12" value="{$auth.mail}">
+                                    <span class="help-block">电子邮箱地址将作为此用户的主要联系方式.</span>
+                                </div>
+
+                                <div class="control-group">
+                                    <button type="submit" class="btn btn-primary">更新我的档案</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="module">
+                        <div class="module-head">
+                            <h3>密码修改</h3>
+                        </div>
+                        <div class="module-body">
+                            <form action="{$updatepass}" method="post" class="form-horizontal row-fluid">
+                                <div class="control-group">
+                                    <label>用户密码</label>
+                                    <input type="password" name="password" placeholder="用户密码" class="span7">
+                                    <span class="help-block">为此用户分配一个密码.</span>
+                                    <span class="help-block">建议使用特殊字符与字母、数字的混编样式,以增加系统安全性.</span>
+                                </div>
+
+                                <div class="control-group">
+                                    <label>用户密码确认</label>
+                                    <input type="password" name="confirm" placeholder="确认密码" class="span7">
+                                    <span class="help-block">请确认你的密码, 与上面输入的密码保持一致.</span>
+                                </div>
+
+                                <div class="control-group">
+                                    <button type="submit" class="btn btn-primary">更新密码</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div><!--/.content-->
+            </div><!--/.span9-->
+        </div>
+    </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<include file="footer" />
+</body>
+</html>

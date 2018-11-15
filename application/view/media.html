@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <include file="header" />
+        <style>
+            .label {
+                padding: 1px 3px;
+            }
+            .pagination {
+                margin: 0;
+            }
+            select {
+                width: auto;
+            }
+            .module-body.table .alert {
+                -webkit-border-radius: 0;
+                -moz-border-radius: 0;
+                border-radius: 0;
+                border: none;
+            }
+        </style>
+    </head>
+    <body>
+        <include file="navbar" />
+        <div class="wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="span3">
+                        <include file="menu" />
+                    </div>
+                    <!--/.span3-->
+                    <div class="span9">
+                        <div class="content">
+                            <div class="module message">
+                                <div class="module-head">
+                                    <h3>管理文件</h3>
+                                </div>
+                                <div class="module-option clearfix">
+                                    <div class="pull-left">
+                                        <span class="dropdown">
+                                            <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">选中项 <i class="icon-caret-down"></i></a>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                <li><a tips="确定要删除吗？" form="all" href="{:safe('/admin/merdia/del')}">删除</a></li>
+                                            </ul>
+                                        </span>
+                                        <button class="btn btn-danger">清理未归档文件</button>
+                                    </div>
+                                    <div class="pull-right">
+                                        <form class="form-search">
+                                            <input type="text" class="input-medium search-query">
+                                            <button type="submit" class="btn btn-primary">刷选</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="module-body table">
+                                    {$alert}
+                                    <form name="all" method="post" action="/admin/post/del">
+                                        <table class="table table-message sel">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="cell-check">
+                                                        <input type="checkbox" class="inbox-checkbox checkall">
+                                                    </td>
+                                                    <td class="cell-title">标题</td>
+                                                    <td class="cell-author hidden-phone hidden-tablet">所属</td>
+                                                    <td class="cell-icon hidden-phone hidden-tablet"></td>
+                                                    <td class="cell-time align-right">日期</td>
+                                                </tr>
+                                                <volist name="medias" id="v">
+                                                    <tr class="read starred">
+                                                        <td class="cell-check">
+                                                            <input name="ids[]" value="{$v.id}" type="checkbox" class="inbox-checkbox">
+                                                        </td>
+                                                        <td class="cell-title">
+                                                            <a href="/admin/media/write?id={$v.id}" class="screenshot" rel="/public/uploads/{$v.path}" title="{$v.title}">{$v.title}</a>
+                                                            <a href="#">&nbsp;&nbsp;<i class="icon-share"></i></a>
+                                                        </td>
+                                                        <td class="cell-author hidden-phone hidden-tablet">
+                                                            <a href="#">{$v.ptitle}</a>
+                                                        </td>
+                                                        <td class="cell-icon hidden-phone hidden-tablet">
+                                                            <i class="icon-paper-clip"></i>
+                                                            <i class="icon-picture"></i>
+                                                        </td>
+                                                        <td class="cell-time align-right">
+                                                            {$v.modified|dateword}
+                                                        </td>
+                                                    </tr>
+                                                </volist>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                                <div class="module-foot">
+                                    <div class="pull-left" style="padding: 6px 1px">Showing 1 to 10 of {$total} entries</div>
+                                    <div class="pagination pagination-right">
+                                        <ul>
+                                            {:$navigator->render()}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.content-->
+                    </div>
+                    <!--/.span9-->
+                </div>
+            </div>
+            <!--/.container-->
+        </div>
+        <include file="footer" />
+        <style>
+            #screenshot {
+                position:absolute;
+                border:1px solid #ccc;
+                background:#333;
+                padding:5px;
+                display:none;
+                color:#fff;
+                z-index: 1300;
+            }
+            #screenshot img {
+                max-width: 300px;
+            }
+        </style>
+        <script>
+            $("a.screenshot").hover(function(e){
+                this.t = this.title;
+                this.title = "";
+                var c = (this.t != "") ? "<br/>" + this.t : "";
+                $("body").append("<p id='screenshot'><img src='"+ this.rel +"' alt='url preview' />"+ c +"</p>");
+                $("#screenshot")
+                    .css("top",(e.pageY - 10) + "px")
+                    .css("left",(e.pageX + 30) + "px")
+                    .fadeIn("fast");
+            },
+            function(){
+                this.title = this.t;
+                $("#screenshot").remove();
+            });
+            $("a.screenshot").mousemove(function(e){
+                $("#screenshot").css("top",(e.pageY - 10) + "px").css("left",(e.pageX + 30) + "px");
+            });
+        </script>
+    </body>
+</html>

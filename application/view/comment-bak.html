@@ -1,0 +1,410 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="header" />
+</head>
+<body>
+<include file="navbar" />
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <include file="menu" />
+                </div>
+                <!--/.span3-->
+                <div class="span9">
+                    <div class="content">
+                        <div class="module tab">
+                            <div class="module-head">
+                                <h3>管理评论</h3>
+                            </div>
+                            <div class="module-body">
+                                <ul class="profile-tab nav nav-tabs">
+                                    <li class="active"><a href="#activity" data-toggle="tab">已通过</a></li>
+                                    <li><a href="#friends" data-toggle="tab">待审核</a></li>
+                                    <li><a href="#tab-trash" data-toggle="tab">垃圾</a></li>
+                                </ul>
+                                <div class="profile-tab-content tab-content">
+                                    <div class="tab-pane fade active in" id="activity">
+                                        <div class="stream-list">
+                                            <volist name="comments" id="v">
+                                                <div class="media stream">
+                                                    <a href="#" class="media-avatar medium pull-left">
+                                                        <img src="_pub_images/user.png">
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <div class="stream-headline">
+                                                            <h5 class="stream-author">
+                                                                {$v.author} <small>{$v.created|dateword} 于 <a href="#">关于</a></small>
+                                                            </h5>
+                                                            <div class="stream-text">{$v.text}</div>
+                                                            <div><a href="#">webmaster@yourdomain.com </a><small>127.0.0.1</small> </div>
+                                                        </div>
+                                                        <!--/.stream-headline-->
+                                                        <div class="stream-options">
+                                                            <a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>待审核 </a>
+                                                            <a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>垃圾 </a>
+                                                            <a href="#" class="btn btn-small"><i class="icon-retweet shaded"></i>编辑 </a>
+                                                            <a href="#" class="btn btn-small"><i class="icon-retweet shaded"></i>回复 </a>
+                                                            <a href="#" class="btn btn-small"><i class="icon-retweet shaded"></i>删除 </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </volist>
+
+                                            <div class="media stream">
+                                                <a href="#" class="media-avatar medium pull-left">
+                                                    <img src="_pub_images/user.png">
+                                                </a>
+                                                <div class="media-body">
+                                                    <div class="stream-headline">
+                                                        <h5 class="stream-author">
+                                                            John Donga <small>08 July, 2014</small>
+                                                        </h5>
+                                                        <div class="stream-text">
+                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                                            Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                                            unknown printer took a galley of type.
+                                                        </div>
+                                                    </div>
+                                                    <!--/.stream-headline-->
+                                                    <div class="stream-options">
+                                                        <a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>Like </a>
+                                                        <a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>Reply </a><a href="#"
+                                                            class="btn btn-small"><i class="icon-retweet shaded"></i>Repost </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/.media .stream-->
+                                            <div class="media stream load-more">
+                                                <a href="#"><i class="icon-refresh shaded"></i>Load more... </a>
+                                            </div>
+                                        </div>
+                                        <!--/.stream-list-->
+                                    </div>
+                                    <div class="tab-pane fade" id="friends">
+                                        <div class="module-option clearfix">
+                                            <form>
+                                                <div class="input-append pull-left">
+                                                    <input type="text" class="span3" placeholder="Filter by name...">
+                                                    <button type="submit" class="btn">
+                                                        <i class="icon-search"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            <div class="btn-group pull-right" data-toggle="buttons-radio">
+                                                <button type="button" class="btn">
+                                                    All</button>
+                                                <button type="button" class="btn">
+                                                    Male</button>
+                                                <button type="button" class="btn">
+                                                    Female</button>
+                                            </div>
+                                        </div>
+                                        <div class="module-body">
+                                            <div class="row-fluid">
+                                                <div class="span6">
+                                                    <div class="media user">
+                                                        <a class="media-avatar pull-left" href="#">
+                                                            <img src="_pub_images/user.png">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <h3 class="media-title">
+                                                                John Donga
+                                                            </h3>
+                                                            <p>
+                                                                <small class="muted">Pakistan</small></p>
+                                                            <div class="media-option btn-group shaded-icon">
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-envelope"></i>
+                                                                </button>
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-share-alt"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="media user">
+                                                        <a class="media-avatar pull-left" href="#">
+                                                            <img src="_pub_images/user.png">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <h3 class="media-title">
+                                                                Donga John</h3>
+                                                            <p>
+                                                                <small class="muted">Pakistan</small></p>
+                                                            <div class="media-option btn-group shaded-icon">
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-envelope"></i>
+                                                                </button>
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-share-alt"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/.row-fluid-->
+                                            <br />
+                                            <div class="row-fluid">
+                                                <div class="span6">
+                                                    <div class="media user">
+                                                        <a class="media-avatar pull-left" href="#">
+                                                            <img src="_pub_images/user.png">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <h3 class="media-title">
+                                                                John Donga</h3>
+                                                            <p>
+                                                                <small class="muted">Pakistan</small></p>
+                                                            <div class="media-option btn-group shaded-icon">
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-envelope"></i>
+                                                                </button>
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-share-alt"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="media user">
+                                                        <a class="media-avatar pull-left" href="#">
+                                                            <img src="_pub_images/user.png">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <h3 class="media-title">
+                                                                Donga John</h3>
+                                                            <p>
+                                                                <small class="muted">Pakistan</small></p>
+                                                            <div class="media-option btn-group shaded-icon">
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-envelope"></i>
+                                                                </button>
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-share-alt"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/.row-fluid-->
+                                            <br />
+                                            <div class="row-fluid">
+                                                <div class="span6">
+                                                    <div class="media user">
+                                                        <a class="media-avatar pull-left" href="#">
+                                                            <img src="_pub_images/user.png">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <h3 class="media-title">
+                                                                John Donga</h3>
+                                                            <p>
+                                                                <small class="muted">Pakistan</small></p>
+                                                            <div class="media-option btn-group shaded-icon">
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-envelope"></i>
+                                                                </button>
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-share-alt"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="media user">
+                                                        <a class="media-avatar pull-left" href="#">
+                                                            <img src="_pub_images/user.png">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <h3 class="media-title">
+                                                                Donga John</h3>
+                                                            <p>
+                                                                <small class="muted">Pakistan</small></p>
+                                                            <div class="media-option btn-group shaded-icon">
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-envelope"></i>
+                                                                </button>
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-share-alt"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/.row-fluid-->
+                                            <br />
+                                            <div class="row-fluid">
+                                                <div class="span6">
+                                                    <div class="media user">
+                                                        <a class="media-avatar pull-left" href="#">
+                                                            <img src="_pub_images/user.png">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <h3 class="media-title">
+                                                                John Donga</h3>
+                                                            <p>
+                                                                <small class="muted">Pakistan</small></p>
+                                                            <div class="media-option btn-group shaded-icon">
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-envelope"></i>
+                                                                </button>
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-share-alt"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="media user">
+                                                        <a class="media-avatar pull-left" href="#">
+                                                            <img src="_pub_images/user.png">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <h3 class="media-title">
+                                                                Donga John</h3>
+                                                            <p>
+                                                                <small class="muted">Pakistan</small></p>
+                                                            <div class="media-option btn-group shaded-icon">
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-envelope"></i>
+                                                                </button>
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-share-alt"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/.row-fluid-->
+                                            <br />
+                                            <div class="pagination pagination-centered">
+
+                                                <ul>
+                                                    <li><a href="#"><i class="icon-double-angle-left"></i></a></li>
+                                                    <li><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a href="#">4</a></li>
+                                                    <li><a href="#"><i class="icon-double-angle-right"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="tab-trash">
+                                        <div class="module-option clearfix">
+                                            <form>
+                                                <div class="input-append pull-left">
+                                                    <input type="text" class="span3" placeholder="Filter by name...">
+                                                    <button type="submit" class="btn">
+                                                        <i class="icon-search"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            <div class="btn-group pull-right" data-toggle="buttons-radio">
+                                                <button type="button" class="btn">All</button>
+                                                <button type="button" class="btn">Male</button>
+                                                <button type="button" class="btn">Female</button>
+                                            </div>
+                                        </div>
+                                        <div class="module-body">
+                                            <div class="row-fluid">
+                                                <div class="stream-list">
+                                                    <volist name="comments" id="v">
+                                                        <div class="media stream">
+                                                            <a href="#" class="media-avatar medium pull-left">
+                                                                <img src="_pub_images/user.png">
+                                                            </a>
+                                                            <div class="media-body">
+                                                                <div class="stream-headline">
+                                                                    <h5 class="stream-author">
+                                                                        {$v.author} <small>{$v.created|dateword} 于 <a href="#">关于</a></small>
+                                                                    </h5>
+                                                                    <div class="stream-text">{$v.text}</div>
+                                                                    <div><a href="#">webmaster@yourdomain.com </a><small>127.0.0.1</small> </div>
+                                                                </div>
+                                                                <!--/.stream-headline-->
+                                                                <div class="stream-options">
+                                                                    <a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>待审核 </a>
+                                                                    <a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>垃圾 </a>
+                                                                    <a href="#" class="btn btn-small"><i class="icon-retweet shaded"></i>编辑 </a>
+                                                                    <a href="#" class="btn btn-small"><i class="icon-retweet shaded"></i>回复 </a>
+                                                                    <a href="#" class="btn btn-small"><i class="icon-retweet shaded"></i>删除 </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </volist>
+
+                                                    <div class="media stream">
+                                                        <a href="#" class="media-avatar medium pull-left">
+                                                            <img src="_pub_images/user.png">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <div class="stream-headline">
+                                                                <h5 class="stream-author">
+                                                                    John Donga <small>08 July, 2014</small>
+                                                                </h5>
+                                                                <div class="stream-text">
+                                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                                                    unknown printer took a galley of type.
+                                                                </div>
+                                                            </div>
+                                                            <!--/.stream-headline-->
+                                                            <div class="stream-options">
+                                                                <a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>Like </a>
+                                                                <a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>Reply </a><a href="#"
+                                                                                                                                                class="btn btn-small"><i class="icon-retweet shaded"></i>Repost </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--/.media .stream -->
+                                                    <div class="media stream load-more">
+                                                        <div class="pagination pagination-centered">
+                                                            <ul>
+                                                                <li><a href="#"><i class="icon-double-angle-left"></i></a></li>
+                                                                <li><a href="#">1</a></li>
+                                                                <li><a href="#">2</a></li>
+                                                                <li><a href="#">3</a></li>
+                                                                <li><a href="#">4</a></li>
+                                                                <li><a href="#"><i class="icon-double-angle-right"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <!--
+                                                        <a href="#"><i class="icon-refresh shaded"></i>Load more... </a>
+                                                        -->
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.module-body-->
+                        </div>
+                        <!--/.module-->
+                    </div>
+                    <!--/.content-->
+                </div>
+                <!--/.span9-->
+            </div>
+        </div>
+        <!--/.container-->
+    </div>
+    <!--/.wrapper-->
+    <include file="footer" />
+    </body>
+</html>

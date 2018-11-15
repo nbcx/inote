@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<include file="header" />
+</head>
+<body>
+	<include file="navbar" />
+	<div class="wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="span3">
+					<include file="menu" />
+				</div><!--/.span3-->
+
+
+				<div class="span9">
+					<div class="content">
+
+						<div class="module">
+							<div class="module-head">
+								<if condition="$classify.id">
+									<h3>编辑 {$classify.name}</h3>
+							    <else />
+									<h3>{:$parent?'新增 '.$parent.name .' 的子分类':'新增分类'}</h3>
+								</if>
+							</div>
+							<div class="module-body">
+									{$alert}
+									<form action="{$action}" method="post" class="form-horizontal row-fluid">
+										<div class="control-group">
+											<label>分类名称 *</label>
+											<input name="name" type="text" class="span8" value="{$classify.name}">
+										</div>
+
+										<div class="control-group">
+											<label>分类缩略名</label>
+											<input name="slug" type="text" class="span5" value="{$classify.slug}">
+											<span class="help-block">分类缩略名用于创建友好的链接形式, 建议使用字母, 数字, 下划线和横杠.</span>
+										</div>
+
+										<div class="control-group">
+											<label>父级分类</label>
+											<select name="parent">
+                                                <option value="0">不选择</option>
+												<volist name="classifies" id="v">
+													<option value="{$v.id}">{$v.name}</option>
+												</volist>
+											</select>
+											<span class="help-block">此分类将归档在您选择的父级分类下.</span>
+										</div>
+
+										<div class="control-group">
+											<label>分类描述</label>
+											<textarea name="description" class="span12" rows="5">{$classify.description}</textarea>
+											<span class="help-block">此文字用于描述分类, 在有的主题中它会被显示.</span>
+										</div>
+
+										<div class="control-group">
+											<button type="submit" class="btn btn-primary">{:$classify.id?'编辑分类':'增加分类'}</button>
+										</div>
+									</form>
+							</div>
+						</div>
+
+					</div><!--/.content-->
+				</div><!--/.span9-->
+			</div>
+		</div><!--/.container-->
+	</div><!--/.wrapper-->
+
+	<include file="footer" />
+    <script>
+        $("select[name='parent']").val("{:$parent?$parent['id']:0}");
+    </script>
+</body>

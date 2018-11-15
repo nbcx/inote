@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="header" />
+    <style>
+        .page-header {
+            margin: 0px 0 20px;
+            padding-bottom: 0;
+        }
+        .page-header .stream-author {
+            margin: -5px 0 5px -5px;
+        }
+    </style>
+</head>
+<body>
+<include file="navbar" />
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span9">
+                <div class="module">
+                    <div class="module-head"><h3>文章</h3></div>
+                    <div class="module-body">
+                        <div class="page-header">
+                            <h1>{$post.title}</h1>
+                            <h3 class="stream-author">
+                                <small>{$v.modified|dateword}</small>
+                                <small>- 访问: {$v.views} 次</a></small>
+                                <small>- 分类：<a href="">John Donga</a></small>
+                            </h3>
+                        </div>
+                        <div class="markdown-body">
+                            {$post.text|content}
+                        </div>
+                    </div>
+                    <!--/.module-body-->
+                </div>
+                <!--/.module-->
+                <include file="comment" />
+            </div>
+            <div class="span3">
+                <include file="sidebar" />
+                <!--/.sidebar-->
+            </div>
+        </div>
+    </div>
+    <!--/.container-->
+</div>
+<!--/.wrapper-->
+<include file="footer" />
+</body>
+</html>

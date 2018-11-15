@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="header" />
+</head>
+<body>
+<include file="navbar" />
+<!-- /navbar -->
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span9">
+                <div class="content">
+                    <div class="module">
+                        <div class="module-head">
+                            <h3>{$page.title}</h3>
+                        </div>
+                        <div class="module-body markdown-body">
+                            {$page.text|content}
+                        </div>
+                    </div>
+                    <include file="comment" />
+                </div>
+                <!--/.content-->
+            </div>
+            <!--/.span9-->
+            <div class="span3">
+                <include file="sidebar" />
+                <!--/.sidebar-->
+            </div>
+            <!--/.span3-->
+        </div>
+    </div>
+    <!--/.container-->
+</div>
+<!--/.wrapper-->
+<include file="footer" />
+</body>
+</html>

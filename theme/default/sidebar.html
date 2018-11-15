@@ -1,0 +1,81 @@
+<style>
+    .widget-menu {
+        border: 1px solid #ccc;
+        border-color: #e9e9e9;
+        border-radius: 4px;
+        box-shadow: 0 0 0 rgba(0,0,0,.05);
+    }
+    .widget-menu a {
+        padding: 10px;
+        line-height: 12px;
+    }
+    .widget-menu>li>a {
+        background-color: #FFF;
+    }
+    .widget-menu>li>a:hover {
+        background-color: #f6f6f6;
+        color: #333;
+    }
+    .widget-menu>li+li {
+        border-top: 1px solid #f6f6f6;
+    }
+    .widget-menu>li>a.head {
+        background-color: #f6f6f6;
+        color: #333;
+        font-size: 14px;
+        font-family: inherit;
+        font-weight: bold;
+        line-height: 15px;
+        height: 15px;
+    }
+</style>
+<div class="sidebar">
+    <!--/.widget-nav-->
+    <ul class="widget widget-menu unstyled">
+        <li><a class="head">分类</a></li>
+        <classifyx do="list" sort="order desc" return="v">
+            <if condition="$v.child">
+                <li>
+                    <a class="collapsed" data-toggle="collapse" href="#classify-{$v.id}">
+                        <i class="icon-chevron-down pull-right"></i>
+                        <i class="icon-chevron-up pull-right"></i>{$v.name}
+                    </a>
+                    <ul id="classify-{$v.id}" class="collapse unstyled">
+                        <volist name="$v.child" id="vv">
+                            <li><a href="{$vv.id|url_classify}"><i class="icon-inbox"></i>{$vv.name} </a></li>
+                        </volist>
+                    </ul>
+                </li>
+            <else />
+                <li><a href="{$v.id|url_classify}">{$v.name} </a></li>
+            </if>
+        </classifyx>
+    </ul>
+
+    <!--/.widget-nav-->
+    <!--
+    <ul class="widget widget-menu unstyled">
+        <li><a class="head">分类</a></li>
+        <li>
+            <a class="collapsed" data-toggle="collapse" href="#togglePages">
+                <i class="menu-icon icon-cog"></i>
+                <i class="icon-chevron-down pull-right"></i>
+                <i class="icon-chevron-up pull-right"></i>More Pages
+            </a>
+            <ul id="togglePages" class="collapse unstyled">
+                <li><a href="other-login.html"><i class="icon-inbox"></i>Login </a></li>
+                <li><a href="other-user-profile.html"><i class="icon-inbox"></i>Profile </a></li>
+                <li><a href="other-user-listing.html"><i class="icon-inbox"></i>All Users </a></li>
+            </ul>
+        </li>
+        <li><a href="#"><i class="menu-icon icon-signout"></i>Logout </a></li>
+    </ul>
+    -->
+
+
+    <ul class="widget widget-menu unstyled">
+        <li><a class="head">友情链接</a></li>
+        <li><a target="_blank" href="https://nb.cx">NB Framework</a></li>
+        <li><a target="_blank" href="https://var.cx">var.cx</a></li>
+    </ul>
+</div>

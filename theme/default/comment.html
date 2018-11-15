@@ -1,0 +1,128 @@
+<div class="module">
+    <div class="module-head"><h3>评论</h3></div>
+    <div class="module-body">
+        <div class="stream-composer media">
+            <div class="media-body">
+                <form method="post" action="{$actionComment}" >
+                    <div class="row-fluid">
+                        <div class="control-group">
+                            <label>称呼</label>
+                            <input type="text" name="author" placeholder="称呼" class="span5">
+                        </div>
+                        <div class="control-group">
+                            <label>Email</label>
+                            <input type="text" name="mail" placeholder="Email" class="span7">
+                        </div>
+                        <div class="control-group">
+                            <label>网站</label>
+                            <input type="text" name="url" placeholder="网站" class="span7">
+                        </div>
+                        <textarea name="text" class="span12" style="height: 70px; resize: none;"></textarea>
+                    </div>
+                    <div class="clearfix">
+                        <button type="submit" class="btn btn-primary ">
+                            提交评论
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="stream-list">
+
+            <div class="media stream">
+                <a href="#" class="media-avatar medium pull-left">
+                    <img src="_pub_images/user.png">
+                </a>
+                <div class="media-body">
+                    <div class="stream-headline">
+                        <h5 class="stream-author">
+                            John Donga <small>08 July, 2014</small>
+                        </h5>
+                        <div class="stream-text">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                            Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                            unknown printer took a galley of type.
+                        </div>
+                    </div>
+                    <!--/.stream-headline-->
+                    <div class="stream-options">
+                        <a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>Like </a>
+                        <a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>Reply </a>
+                        <a href="#" class="btn btn-small"><i class="icon-retweet shaded"></i>Repost </a>
+                    </div>
+                    <div class="stream-respond">
+                        <div class="media stream">
+                            <a href="#" class="media-avatar small pull-left">
+                                <img src="_pub_images/user.png">
+                            </a>
+                            <div class="media-body">
+                                <div class="stream-headline">
+                                    <h5 class="stream-author">
+                                        John Donga <small>10 July 14</small>
+                                    </h5>
+                                    <div class="stream-text">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                    </div>
+                                </div>
+                                <!--/.stream-headline-->
+                            </div>
+                        </div>
+                        <!--/.media .stream-->
+                        <div class="media stream">
+                            <a href="#" class="media-avatar small pull-left">
+                                <img src="_pub_images/user.png">
+                            </a>
+                            <div class="media-body">
+                                <div class="stream-headline">
+                                    <h5 class="stream-author">
+                                        John Donga <small>12 July 14</small>
+                                    </h5>
+                                    <div class="stream-text">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum is simply dummy text.
+                                    </div>
+                                </div>
+                                <!--/.stream-headline-->
+                            </div>
+                        </div>
+                        <!--/.media .stream-->
+                    </div>
+                    <!--/.stream-respond-->
+                </div>
+            </div>
+            <!--/.media .stream-->
+            <div class="media stream">
+                <a href="#" class="media-avatar medium pull-left">
+                    <img src="_pub_images/user.png">
+                </a>
+                <div class="media-body">
+                    <div class="stream-headline">
+                        <h5 class="stream-author">
+                            John Donga <small>08 July, 2014</small>
+                        </h5>
+                        <div class="stream-text">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                            Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                            unknown printer took a galley of type.
+                        </div>
+                    </div>
+                    <!--/.stream-headline-->
+                    <div class="stream-options">
+                        <a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>Like </a>
+                        <a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>Reply </a>
+                        <a href="#" class="btn btn-small"><i class="icon-retweet shaded"></i>Repost </a>
+                    </div>
+                </div>
+            </div>
+            <!--/.media .stream-->
+            <div class="media stream load-more">
+                <a href="#"><i class="icon-refresh shaded"></i>Load more... </a>
+            </div>
+        </div>
+        <!--/.stream-list-->
+
+    </div>
+    <!--/.module-body-->
+</div>
+<!--/.module-->

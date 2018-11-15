@@ -1,0 +1,41 @@
+﻿<?php \nb\Hook::pos('editor')->trigger($signal)->rich(); ?>
+<if condition="$signal=== false">
+    <link rel="stylesheet" href="_pub_scripts/simplemde/simplemde.min.css"/>
+    <script type="text/javascript" src="_pub_scripts/simplemde/simplemde.min.js"></script>
+    <style>
+        .CodeMirror {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .editor-statusbar {
+            padding: 2px 10px;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+        .editor-toolbar:before {
+            margin-bottom: 0;
+        }
+        .editor-toolbar:after {
+            margin-top: 0;
+        }
+        .editor-toolbar.fullscreen {
+            z-index: 1031;
+        }
+    </style>
+    <script type="text/javascript">
+        var simplemde = new SimpleMDE({
+            element: document.getElementById("content"),
+            spellChecker: false,
+            status: false,
+            hideIcons: ["guide"],
+            showIcons: [ "code","table","horizontal-rule"],
+            insertTexts: {
+                horizontalRule: ["", "\n<!--more-->\n"],
+                table: ["", "\n\n| Column 1 | Column 2 | Column 3 |\n| -------- | -------- | -------- |\n| Text     | Text      | Text     |\n\n"],
+            },
+        });
+        function insert(url,title) {
+            simplemde.value(simplemde.value()+'\r\n!['+title+']('+url+')');
+        }
+    </script>
+</if>

@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <include file="header" />
+        <style>
+            .btn-box {
+                border: 1px solid silver;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <include file="navbar" />
+        <div class="wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="span3">
+                        <include file="menu" />
+                    </div>
+                    <!--/.span3-->
+                    <div class="span9">
+                        <div class="content">
+
+                            <div class="module">
+                                <div class="module-head">
+                                    <h3>快捷操作</h3>
+                                </div>
+                                <div class="module-body">
+                                    <div class="btn-box-row row-fluid">
+                                        <div class="span12">
+                                            <a href="/admin/post/index" class="btn-box small span2"><i class="icon-text-height"></i><b>文章</b></a>
+                                            <a href="/admin/page/index" class="btn-box small span2"><i class="icon-globe"></i><b>独立页面</b></a>
+                                            <a href="/admin/comment/index" class="btn-box small span2"><i class="icon-comment"></i><b>评论</b></a>
+                                            <a href="/admin/classify/index" class="btn-box small span2"><i class="icon-list"></i><b>分类</b></a>
+                                            <a href="/admin/media/index" class="btn-box small span2"><i class="icon-file"></i><b>文件</b></a>
+                                            <a href="/admin/setting/index" class="btn-box small span2"><i class="icon-cog"></i><b>系统设置</b></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module">
+                                <div class="module-head">
+                                    <h3>系统信息</h3>
+                                </div>
+                                <div class="module-body">
+                                    <ul class="widget widget-usage unstyled">
+                                        <li class="hero-unit">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>操作系统</th>
+                                                    <th>服务器</th>
+                                                    <th>PHP</th>
+                                                    <th>数据库</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>{$sys.os}</td>
+                                                    <td>{$sys.server}</td>
+                                                    <td><b class="label ">{$sys.phpversion}</b></td>
+                                                    <td><b class="label ">{$sys.database_info}</b></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <strong>存储</strong> <span class="pull-right small muted">{$sys.disk_use_percent}%</span>
+                                            </p>
+                                            <div class="progress tight">
+                                                <div class="bar" style="width: {$sys.disk_use_percent}%;">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>最大上传限制</strong> <span class="small muted">{$sys.upload_max_filesize}</span>
+                                        </li>
+                                        <li>
+                                            <strong>脚本运行占用最大内存</strong> <span class="small muted">{$sys.memory_limit}</span>
+                                        </li>
+                                        <li>
+                                            <strong>最大执行时间</strong> <span class="small muted">{$sys.max_execution_time}s</span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                            <div class="module">
+                                <div class="module-head">
+                                    <h3>最近发布的文章</h3>
+                                </div>
+                                <div class="module-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>标题</th>
+                                                <th>日期</th>
+                                                <th></th>
+                                                <th width="20"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <volist name="posts" id="v">
+                                            <tr>
+                                                <td><a href="/admin/page/write?id={$v.id}">{$v.title}</a></td>
+                                                <td>{$v.modified|dateword}</td>
+                                                <td><b class="label ">{$v.commentsNum}</b></td>
+                                                <td><a confirm="确定删除此页面吗？" class="btn" href="{:safe('/admin/page/del?id='.$v.id)}">删除</a></td>
+                                            </tr>
+                                        </volist>
+                                        </tbody>
+                                    </table>
+
+                                    <br />
+                                    <!-- <hr /> -->
+
+                                </div>
+                            </div>
+
+                            <div class="module tab">
+                                <div class="module-head">
+                                    <h3>最近得到的评论</h3>
+                                </div>
+                                <div class="module-body">
+                                    <div class="stream-list">
+                                        <volist name="comments" id="v">
+                                            <div class="media stream">
+                                                <div class="media-avatar medium pull-left">
+                                                    <a href="#" >
+                                                        <img src="{$v.mail|gravatar}">
+                                                    </a>
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="stream-headline">
+                                                        <h5 class="stream-author">
+                                                            {$v.author} <small>{$v.created|dateword} 于 <a href="#">关于</a></small>
+                                                        </h5>
+                                                        <div class="stream-text">{$v.text}</div>
+                                                        <div><a href="#">{$v.mail}</a><small>{$v.ip}</small> </div>
+                                                    </div>
+                                                    <!--/.stream-headline-->
+                                                    <div class="stream-options">
+                                                        <a href="/admin/comment/write?id={$v.id}" class="btn btn-small"><i class="icon-retweet shaded"></i>编辑 </a>
+                                                        <a href="/admin/comment/reply?id={$v.id}" class="btn btn-small"><i class="icon-retweet shaded"></i>回复 </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </volist>
+                                        <!--/.media .stream -->
+                                    </div>
+                                </div>
+                                <!--/.module-body-->
+                            </div>
+
+                        </div>
+                        <!--/.content-->
+                    </div>
+                    <!--/.span9-->
+                </div>
+            </div>
+            <!--/.container-->
+        </div>
+        <include file="footer" />
+    </body>
+</html>

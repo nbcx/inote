@@ -1,0 +1,22 @@
+{
+  "name": "nbcx/sblog",
+  "description": "a very simple personal blog",
+  "type": "project",
+  "keywords": [
+    "framework",
+    "nb",
+    "swoole",
+    "blog"
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "nbcx/framework": "dev-master",
+    "olcx/ueditor": "dev-master"
+  },
+  "extra": {
+    "nb-path": "nb"
+  },
+  "config": {
+    "preferred-install": "dist"
+  }
+}

@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="header"/>
+    <link rel="stylesheet" media="all" type="text/css" href="_pub_scripts/timepicker/jquery-ui-timepicker-addon.css" />
+</head>
+<body>
+<include file="navbar"/>
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <include file="menu"/>
+            </div><!--/.span3-->
+            <div class="span9">
+                <div class="content">
+                    <form action="{$action}" method="post" class="form-horizontal row-fluid">
+                        <div class="module tab">
+                            <div class="module-head">
+                                <h3>系统设置</h3>
+                            </div>
+                            <div class="module-body">
+                                <ul class="profile-tab nav nav-tabs">
+                                    <li class="active"><a href="#tab-base" data-toggle="tab"> 基本</a></li>
+                                    <li><a href="#tab-comment" data-toggle="tab">评论</a></li>
+                                    <li><a href="#tab-read" data-toggle="tab">阅读</a></li>
+                                </ul>
+                                <div class="profile-tab-content tab-content">
+
+                                    <!-- 基本设置 -->
+                                    <div class="tab-pane fade active in" id="tab-base">
+                                        {$alert}
+                                        <div class="control-group">
+                                            <label>站点名称</label>
+                                            <input name="description" type="text" class="span7 tip" value="{$setting.title}">
+                                            <span class="help-block">站点的名称将显示在网页的标题处.</span>
+                                        </div>
+                                        <div class="control-group">
+                                            <label>站点描述</label>
+                                            <input type="text" name="keywords" class="span12" value="{$setting.description}">
+                                            <span class="help-block">站点描述将显示在网页代码的头部.</span>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>关键词</label>
+                                            <input type="text" name="slug" placeholder="缩略名" class="span12" value="{$setting.keywords}">
+                                            <span class="help-block">请以半角逗号 "," 分割多个关键字.</span>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>选择使用主题</label>
+                                            <select name="theme">
+                                                <option value="default">default</option>
+                                                <option value="3600">doc</option>
+                                                <option value="3600">typecho</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <button type="submit" class="btn btn-primary">保存设置</button>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- 评论设置 -->
+                                    <div class="tab-pane fade" id="tab-comment">
+                                        <div class="control-group">
+                                            <h5>评论日期格式</h5>
+                                            <input name="title" type="text" placeholder="标题" class="span7 tip" value="F jS, Y \a\t h:i a">
+                                            <span class="help-block">这是一个默认的格式,当你在模板中调用显示评论日期方法时, 如果没有指定日期格式, 将按照此格式输出.</span>
+                                             <span class="help-block">具体写法请参考 <a target="_blank" href="http://www.php.net/manual/zh/function.date.php">PHP 日期格式写法.</a> </span>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>评论列表数目</label>
+                                            <input type="text" name="sort" class="span2 tip" value="{$page.sort|default='0'}">
+                                            <span class="help-block">此数目用于指定显示在侧边栏中的评论列表数目.</span>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <h5>评论显示</h5>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="">仅显示评论, 不显示 Pingback 和 Trackback
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="">在评论中使用 Markdown 语法
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="">评论者名称显示时自动加上其个人主页链接
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="">对评论者个人主页链接使用 nofollow 属性
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="">启用 Gravatar 头像服务, 最高显示评级为  的头像
+                                            </label>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <h5>评论提交</h5>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="">所有评论必须经过审核
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="">评论者之前须有评论通过了审核
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="">必须填写邮箱
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="">必须填写网址
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="">检查评论来源页 URL 是否与文章链接一致
+                                            </label>
+
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="">同一 IP 发布评论的时间间隔限制为1分钟
+                                            </label>
+                                        </div>
+
+
+                                        <div class="control-group">
+                                            <label>允许使用的HTML标签和属性</label>
+                                            <textarea class="span12" rows="5"></textarea>
+                                            <span class="help-block">默认的用户评论不允许填写任何的HTML标签, 你可以在这里填写允许使用的HTML标签.</span>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <button type="submit" class="btn btn-primary">保存设置</button>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- 阅读设置 -->
+                                    <div class="tab-pane fade" id="tab-read">
+                                        <div class="control-group">
+                                            <h5>文章日期格式</h5>
+                                            <input name="title" type="text" placeholder="标题" class="span7 tip" value="F jS, Y \a\t h:i a">
+                                            <span class="help-block">此格式用于指定显示在文章归档中的日期默认显示格式.</span>
+                                            <span class="help-block">在某些主题中这个格式可能不会生效, 因为主题作者可以自定义日期格式.</span>
+                                            <span class="help-block">请参考 <a target="_blank" href="http://www.php.net/manual/zh/function.date.php">PHP 日期格式写法.</a> </span>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>站点首页</label>
+                                            <select name="timezone">
+                                                <option value="0">显示最新发布的文章</option>
+                                                <option value="-43200">使用关于页面作为首页</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>文章列表数目</label>
+                                            <input type="text" name="sort" class="span2 tip" value="{$page.sort|default='0'}">
+                                            <span class="help-block">此数目用于指定显示在侧边栏中的评论列表数目.</span>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>每页文章数目</label>
+                                            <input type="text" name="sort" class="span2 tip" value="{$page.sort|default='0'}">
+                                            <span class="help-block">此数目用于指定文章归档输出时每页显示的文章数目.</span>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>聚合全文输出</label>
+                                            <p>
+                                                <label class="radio inline">
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">仅输出摘要
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">全文输出
+                                                </label>
+                                            </p>
+                                            <span class="help-block">如果你不希望在聚合中输出文章全文,请使用仅输出摘要选项.</span>
+                                            <span class="help-block">摘要的文字取决于你在文章中使用分隔符的位置.</span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!--/.module-body-->
+                        </div>
+
+                    </form>
+                </div><!--/.content-->
+            </div><!--/.span9-->
+        </div>
+    </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<include file="footer"/>
+</body>
+</html>

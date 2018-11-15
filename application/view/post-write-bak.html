@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="header"/>
+    <link rel="stylesheet" type="text/css" href="_pub_scripts/select/css/bootstrap-select.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="_pub_scripts/timepicker/jquery-ui-timepicker-addon.css" />
+</head>
+<body>
+
+<include file="navbar"/>
+
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <include file="menu"/>
+            </div><!--/.span3-->
+
+            <div class="span9">
+                <div class="content">
+                    <form class="form-horizontal row-fluid" action="{$action}" method="post">
+                        <div class="module tab">
+                            <div class="module-head">
+                                <h3>撰写新文章</h3>
+                            </div>
+                            <div class="module-body">
+                                <ul class="profile-tab nav nav-tabs">
+                                    <li class="active"><a href="#tab-main" data-toggle="tab"> 正文</a></li>
+                                    <li><a href="#tab-advance" data-toggle="tab">附加选项</a></li>
+                                    <li><a class="upload-refresh" href="#tab-file" data-toggle="tab">附件</a></li>
+                                </ul>
+                                <div class="profile-tab-content tab-content">
+                                    <div class="tab-pane fade active in" id="tab-main">
+                                        {$alert}
+                                        <div class="control-group">
+                                            <input name="title" type="text" placeholder="标题" class="span12 tip" value="{$post.title}">
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>文章分类</label>
+                                            <select class="selectpicker" name="category[]" multiple data-max-options="3" data-live-search="true">
+                                                <volist name="classifies" id="v">
+                                                    <option value="{$v.id}">{$v.name}</option>
+                                                </volist>
+                                            </select>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <button type="submit" class="btn">保存草稿</button>
+                                            <button type="submit" class="btn btn-primary">发布文章</button>
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-pane fade" id="tab-advance">
+                                        <div class="control-group">
+                                            <label>发布日期</label>
+                                            <input type="text" id="date" name="created" value="{$post.created|date='Y-m-d H:i:s',###}"  placeholder="发布日期" class="span8" >
+                                            <span class="help-block">你的页面在发布日期未到之前将不可被访问！</span>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>公开度</label>
+                                            <select name="status" class="span4">
+                                                <option value="publish">公开</option>
+                                                <option value="hidden">隐藏</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>权限控制</label>
+                                            <label class="checkbox inline">
+                                                <input type="checkbox" name="allowComment" value="1" checked="true"> 允许评论
+                                            </label>
+                                            <label class="checkbox inline">
+                                                <input type="checkbox" name="allowPing" value="1" checked="true"> 允许被引用
+                                            </label>
+                                            <label class="checkbox inline">
+                                                <input type="checkbox" name="allowFeed" value="1" checked="true"> 允许在聚合中出现
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab-file">
+                                        <include file="upload" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.module-body-->
+                        </div>
+
+                        <div class="module">
+                            <div class="module-body" style="padding: 0px">
+                                <textarea id="content" name="text" placeholder="文章内容">{$post.text}</textarea>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div><!--/.content-->
+            </div><!--/.span9-->
+        </div>
+    </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<include file="footer"/>
+<include file="editor"/>
+<script src="_pub_scripts/select/js/bootstrap-select.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $(function() {
+        $(".selectpicker").selectpicker({
+            noneSelectedText: '请选择',
+            countSelectedText: function(){}
+        });
+    });
+    function selectValue() {
+        //获取选择的值
+        alert($('#usertype').selectpicker('val'));
+    }
+</script>
+<script type="text/javascript" src="_pub_scripts/timepicker/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="_pub_scripts/timepicker/jquery-ui-timepicker-zh-CN.js"></script>
+<script type="text/javascript" src="_pub_scripts/timepicker/jquery-ui-sliderAccess.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#date').datetimepicker({
+            dateFormat:'yy-mm-dd',
+            timeFormat: 'HH:mm:ss',
+            hour: (new Date()).getHours(),
+            minute: (new Date()).getMinutes(),
+            second: (new Date()).getSeconds()
+        });
+    })
+</script>
+</body>
+</html>

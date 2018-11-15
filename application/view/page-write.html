@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="header"/>
+    <link rel="stylesheet" media="all" type="text/css" href="_pub_scripts/timepicker/jquery-ui-timepicker-addon.css" />
+</head>
+<body>
+<include file="navbar"/>
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <include file="menu"/>
+            </div><!--/.span3-->
+            <div class="span9">
+                <div class="content">
+                    <form action="{$action}" method="post" class="form-horizontal row-fluid">
+                        <div class="module tab">
+                            <div class="module-head">
+                                <h3>{$page.title|default='创建新页面'}</h3>
+                            </div>
+                            <div class="module-body">
+                                <ul class="profile-tab nav nav-tabs">
+                                    <li class="active"><a href="#activity" data-toggle="tab"> 正文</a></li>
+                                    <li><a href="#tab-advance" data-toggle="tab">其它选项</a></li>
+                                    <li><a class="upload-refresh" href="#tab-file" data-toggle="tab">附件</a></li>
+                                </ul>
+                                <div class="profile-tab-content tab-content">
+                                    <div class="tab-pane fade active in" id="activity">
+                                        {$alert}
+                                        <div class="control-group">
+                                            <input name="title" type="text" placeholder="标题" class="span12 tip" value="{$page.title}">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>缩略名</label>
+                                            <input type="text" name="slug" placeholder="缩略名" class="span5" value="{$page.slug}">
+                                            <span class="help-block">文件缩略名用于创建友好的链接形式,建议使用字母,数字,下划线和横杠.</span>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <button type="submit" class="btn">保存草稿</button>
+                                            <button type="submit" class="btn btn-primary">发布文章</button>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab-advance">
+                                        <div class="control-group">
+                                            <label>发布日期</label>
+                                            <input type="text" id="date" name="created" placeholder="发布日期" class="span8" {$page.created}>
+                                            <span class="help-block">你的页面在发布日期未到之前将不可被访问！</span>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>页面顺序</label>
+                                            <input type="text" name="sort" class="span3 tip" value="{$page.sort|default='0'}">
+                                            <span class="help-block">为你的自定义页面设定一个序列值以后, 能够使得它们按此值从小到大排列</span>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>自定义模板</label>
+                                            <select name="template">
+                                                <option value="page">不选择</option>
+                                                <volist name="stencils" id="v">
+                                                    <option value="{$v}">{$v}</option>
+                                                </volist>
+                                            </select>
+                                            <span class="help-block">如果你为此页面选择了一个自定义模板, 系统将按照你选择的模板文件展现它.</span>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>公开度</label>
+                                            <select name="status" class="span4">
+                                                <option value="publish">公开</option>
+                                                <option value="hidden">隐藏</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="control-group">
+                                            <label>权限控制</label>
+                                            <label class="checkbox inline">
+                                                <input type="checkbox" name="allowComment" value="1" checked="true"> 允许评论
+                                            </label>
+                                            <label class="checkbox inline">
+                                                <input type="checkbox" name="allowPing" value="1" checked="true"> 允许被引用
+                                            </label>
+                                            <label class="checkbox inline">
+                                                <input type="checkbox" name="allowFeed" value="1" checked="true"> 允许在聚合中出现
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab-file">
+                                        <include file="upload" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.module-body-->
+                        </div>
+
+                        <div class="module">
+                            <div class="module-body" style="padding: 0px">
+                                <textarea id="content" name="text" placeholder="话题内容" style="min-height: 300px;">{$page.text}</textarea>
+                            </div>
+                        </div>
+
+                    </form>
+                </div><!--/.content-->
+            </div><!--/.span9-->
+        </div>
+    </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<include file="footer"/>
+<include file="editor"/>
+<script type="text/javascript" src="_pub_scripts/timepicker/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="_pub_scripts/timepicker/jquery-ui-timepicker-zh-CN.js"></script>
+<script type="text/javascript" src="_pub_scripts/timepicker/jquery-ui-sliderAccess.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#date').datetimepicker({
+            timeFormat: 'HH:mm:ss',
+            hour: (new Date()).getHours(),
+            minute: (new Date()).getMinutes(),
+            second: (new Date()).getSeconds()
+        });
+    })
+</script>
+</body>
+</html>

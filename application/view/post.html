@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <include file="header" />
+        <style>
+            .label {
+                padding: 1px 3px;
+            }
+            .pagination {
+                margin: 0;
+            }
+            select {
+                width: auto;
+            }
+            .module-body.table .alert {
+                -webkit-border-radius: 0;
+                -moz-border-radius: 0;
+                border-radius: 0;
+                border: none;
+            }
+        </style>
+    </head>
+    <body>
+        <include file="navbar" />
+        <div class="wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="span3">
+                        <include file="menu" />
+                    </div>
+                    <!--/.span3-->
+                    <div class="span9">
+                        <div class="content">
+                            <div class="module message">
+                                <div class="module-head">
+                                    <h3>管理文章<a class="pull-right" href="/admin/post/write">新增文章</a></h3>
+                                </div>
+                                <div class="module-option clearfix">
+                                    <div class="pull-left">
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">选中项<i class="icon-caret-down"></i></a>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                <li><a tips="确定要删除吗？" form="all" href="/admin/post/del">删除</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="pull-right">
+                                        <form class="form-search">
+                                            <input type="text" class="input-medium search-query">
+                                            <select name="classify span2">
+                                                <volist name="classifies" id="v">
+                                                    <option value="{$v.id}">{$v.name}</option>
+                                                </volist>
+                                            </select>
+                                            <button type="submit" class="btn btn-primary">刷选</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="module-body table">
+                                    {$alert}
+                                    <form name="all" method="post" action="/admin/post/del">
+                                        <table class="table table-message sel">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="cell-check">
+                                                        <input type="checkbox" class="inbox-checkbox checkall">
+                                                    </td>
+                                                    <td class="cell-icon"></td>
+                                                    <td class="cell-title">标题</td>
+                                                    <td class="cell-author hidden-phone hidden-tablet">分类</td>
+                                                    <td class="cell-icon hidden-phone hidden-tablet"></td>
+                                                    <td class="cell-time align-right">日期</td>
+                                                </tr>
+                                                <volist name="posts" id="v">
+                                                    <tr class="read starred">
+                                                        <td class="cell-check">
+                                                            <input name="ids[]" value="{$v.id}" type="checkbox" class="inbox-checkbox">
+                                                        </td>
+                                                        <td class="cell-icon">
+                                                            <b class="label ">{$v.commentsNum}</b>
+                                                        </td>
+                                                        <td class="cell-title"><a href="/admin/post/write?id={$v.id}">{$v.title}</a></td>
+                                                        <td class="cell-author hidden-phone hidden-tablet">
+                                                            <a href="#">{$v.cname}</a>
+                                                        </td>
+                                                        <td class="cell-icon hidden-phone hidden-tablet">
+                                                            <i class="icon-paper-clip"></i>
+                                                        </td>
+                                                        <td class="cell-time align-right">
+                                                            {$v.modified|dateword}
+                                                        </td>
+                                                    </tr>
+                                                </volist>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                                <div class="module-foot">
+                                    <div class="pull-left" style="padding: 6px 1px">Showing 1 to 10 of {$total} entries</div>
+                                    <div class="pagination pagination-right">
+                                        <ul>
+                                            {:$navigator->render()}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.content-->
+                    </div>
+                    <!--/.span9-->
+                </div>
+            </div>
+            <!--/.container-->
+        </div>
+        <include file="footer" />
+    </body>
+</html>

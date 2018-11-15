@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="header" />
+</head>
+<body>
+<include file="navbar" />
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <include file="menu" />
+                </div>
+                <!--/.span3-->
+                <div class="span9">
+                    <div class="content comment">
+                        <div class="module tab">
+                            <div class="module-head">
+                                <h3>管理评论</h3>
+                            </div>
+                            <div class="module-body">
+                                <ul class="profile-tab nav nav-tabs">
+                                    <li class="active"><a href="#activity" data-toggle="tab">已通过</a></li>
+                                    <li><a href="#friends" data-toggle="tab">待审核</a></li>
+                                    <li><a href="#tab-trash" data-toggle="tab">垃圾</a></li>
+                                </ul>
+                                <div class="module-option clearfix">
+                                    <div class="input-append pull-left">
+                                        <span class="dropdown">
+                                            <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">选中项<i class="icon-caret-down"></i></a>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                <li><a href="/admin/post/del2">待审核</a></li>
+                                                <li><a href="/admin/post/del2">垃圾</a></li>
+                                                <li><a tips="确定要删除吗？" form="all" href="/admin/post/del">删除</a></li>
+                                            </ul>
+                                        </span>
+                                        <span class="btn">
+                                            <input type="checkbox" class="btn inbox-checkbox checkall">
+                                        </span>
+                                    </div>
+                                    <div class="pull-right">
+                                        <form class="form-search">
+                                            <input type="text" class="input-medium search-query">
+                                            <button type="submit" class="btn btn-primary">刷选</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="stream-list sel">
+                                    <form name="all" method="post" >
+                                        <volist name="comments" id="v">
+                                        <div class="media stream">
+                                            <div class="media-avatar medium pull-left text-center">
+                                                <a href="#" >
+                                                    <img src="_pub_images/user.png">
+                                                </a>
+                                                <input name="ids[]" value="{$v.id}" type="checkbox" class="inbox-checkbox">
+                                            </div>
+
+                                            <div class="media-body">
+                                                <div class="stream-headline">
+                                                    <h5 class="stream-author">
+                                                        {$v.author} <small>{$v.created|dateword} 于 <a href="#">关于</a></small>
+                                                    </h5>
+                                                    <div class="stream-text">{$v.text}</div>
+                                                    <div><a href="#">webmaster@yourdomain.com </a><small>127.0.0.1</small> </div>
+                                                </div>
+                                                <!--/.stream-headline-->
+                                                <div class="stream-options">
+                                                    <a href="/admin/comment/write?id={$v.id}" class="btn btn-small"><i class="icon-retweet shaded"></i>编辑 </a>
+                                                    <a href="/admin/comment/reply?id={$v.id}" class="btn btn-small"><i class="icon-retweet shaded"></i>回复 </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </volist>
+                                    </form>
+                                    <div class="media stream">
+                                        <a href="#" class="media-avatar medium pull-left">
+                                            <img src="_pub_images/user.png">
+                                        </a>
+                                        <div class="media-body">
+                                            <div class="stream-headline">
+                                                <h5 class="stream-author">
+                                                    John Donga <small>08 July, 2014</small>
+                                                </h5>
+                                                <div class="stream-text">
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                                    unknown printer took a galley of type.
+                                                </div>
+                                            </div>
+                                            <!--/.stream-headline-->
+                                            <div class="stream-options">
+                                                <a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>Like </a>
+                                                <a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>Reply </a>
+                                                <a href="#" class="btn btn-small"><i class="icon-retweet shaded"></i>Repost </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/.media .stream -->
+                                </div>
+                            </div>
+                            <!--/.module-body-->
+                            <div class="module-foot">
+                                <div class="pull-left" style="padding: 6px 1px">Showing 1 to 10 of {$total} entries</div>
+                                <div class="pagination pagination-right">
+                                    <ul>
+                                        <li><a href="#"><i class="icon-double-angle-left"></i></a></li>
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#"><i class="icon-double-angle-right"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.module-->
+                    </div>
+                    <!--/.content-->
+                </div>
+                <!--/.span9-->
+            </div>
+        </div>
+        <!--/.container-->
+    </div>
+    <!--/.wrapper-->
+    <include file="footer" />
+    </body>
+</html>

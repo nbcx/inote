@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="header" />
+</head>
+<body>
+<include file="navbar" />
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+
+            <div class="span9">
+                <div class="content">
+                    <div class="module">
+                        <div class="module-head">
+                            <h3>首页</h3>
+                        </div>
+                        <div class="module-body">
+
+                            <div class="profile-tab-content tab-content">
+                                <div class="tab-pane fade active in" >
+                                    <div class="stream-list">
+                                        <volist name="posts" id="v">
+                                            <div class="media stream">
+                                                <div class="media-body">
+                                                    <div class="stream-headline">
+                                                        <h2><a href="{$v.id|url_post}">{$v.title}</a></h2>
+                                                        <h3 class="stream-author">
+                                                            <small>{$v.modified|dateword}
+                                                            - 访问: {$v.views} 次</a>
+                                                            - 分类：<a href="">John Donga</a>
+                                                            - <a href="">1条评论</a></small>
+                                                        </h3>
+                                                        <div class="stream-text">
+                                                            {$v.text|excerpt}
+                                                        </div>
+                                                    </div>
+                                                    <!--/.stream-headline-->
+                                                    <!--
+                                                    <div class="stream-options">
+                                                        <a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>Like </a>
+                                                        <a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>Reply </a>
+                                                        <a href="#"></a>
+                                                    </div>
+                                                    -->
+                                                </div>
+                                            </div>
+                                        </volist>
+
+
+                                        <div class="media stream "><!--load-more-->
+                                            <div class="pagination"><!-- pagination-centered-->
+                                                <ul>
+                                                    {:$navigator->render()}
+                                                </ul>
+                                            </div>
+                                            <!--
+                                            <a href="#"><i class="icon-refresh shaded"></i>Load more... </a>
+                                            -->
+                                        </div>
+                                    </div>
+                                    <!--/.stream-list-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.module-body-->
+                    </div>
+                    <!--/.module-->
+                </div>
+                <!--/.content-->
+            </div>
+            <!--/.span9-->
+
+            <div class="span3">
+                <include file="sidebar" />
+                <!--/.sidebar-->
+            </div>
+            <!--/.span3-->
+        </div>
+    </div>
+    <!--/.container-->
+</div>
+<!--/.wrapper-->
+<include file="footer" />
+</body>
+</html>

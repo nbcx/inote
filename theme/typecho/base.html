@@ -1,0 +1,125 @@
+
+<!DOCTYPE HTML>
+<html class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title><block name="title">Hello World</block></title>
+
+    <!-- 使用url函数转换相关路径 -->
+    <link rel="stylesheet" href="//cdnjscn.b0.upaiyun.com/libs/normalize/2.1.3/normalize.min.css">
+    <link rel="stylesheet" href="_theme_grid.css">
+    <link rel="stylesheet" href="_theme_style.css">
+
+    <!--[if lt IE 9]>
+    <script src="//cdnjscn.b0.upaiyun.com/libs/html5shiv/r29/html5.min.js"></script>
+    <script src="//cdnjscn.b0.upaiyun.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <block name="head"></block>
+</head>
+<body>
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.</div>
+<![endif]-->
+<block name="header">
+    <header id="header" class="clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="site-name col-mb-12 col-9">
+                    <a id="logo" href="http://type.ol.cx/">Hello World</a>
+                    <p class="description">Just So So ...</p>
+                </div>
+                <div class="site-search col-3 kit-hidden-tb">
+                    <form id="search" method="post" action="http://type.ol.cx/" role="search">
+                        <label for="s" class="sr-only">搜索关键字</label>
+                        <input type="text" id="s" name="s" class="text" placeholder="输入关键字搜索" />
+                        <button type="submit" class="submit">搜索</button>
+                    </form>
+                </div>
+                <div class="col-mb-12">
+                    <block name="nav">
+                        <nav id="nav-menu" class="clearfix" role="navigation">
+                            <a class="current" href="/">首页</a>
+                            <pages do="list" num="10" page="1" sort="order desc" return="v">
+                                <a href="{$v.id|url_page}" title="关于">{$v.title}</a>
+                            </pages>
+                        </nav>
+                    </block>
+                </div>
+            </div><!-- end .row -->
+        </div>
+    </header><!-- end #header -->
+</block>
+<div id="body">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-mb-12 col-8" id="main" role="main">
+                <block name="main"></block>
+            </div><!-- end #main-->
+
+            <div class="col-mb-12 col-offset-1 col-3 kit-hidden-tb" id="secondary" role="complementary">
+                <block name="post-recent">
+                    <section class="widget">
+                        <h3 class="widget-title">最新文章</h3>
+                        <ul class="widget-list">
+                            <li><a href="http://type.ol.cx/index.php/archives/1/">欢迎使用 Typecho</a></li>        </ul>
+                    </section>
+                </block>
+
+                <block name="comment-recent">
+                    <section class="widget">
+                        <h3 class="widget-title">最近回复</h3>
+                        <ul class="widget-list">
+                            <li><a href="http://type.ol.cx/index.php/archives/1/#comment-1">Typecho</a>: 欢迎加入 Typecho 大家族</li>
+                        </ul>
+                    </section>
+                </block>
+
+                <block name="classify-list">
+                    <section class="widget">
+                        <h3 class="widget-title">分类</h3>
+                        <ul class="widget-list"><li class="category-level-0 category-parent"><a href="http://type.ol.cx/index.php/category/default/">默认分类</a></li></ul>
+                    </section>
+                </block>
+
+                <block name="post-date">
+                    <section class="widget">
+                        <h3 class="widget-title">归档</h3>
+                        <ul class="widget-list">
+                            <li><a href="http://type.ol.cx/index.php/2018/08/">August 2018</a></li>
+                        </ul>
+                    </section>
+                </block>
+
+                <block name="other">
+                    <section class="widget">
+                        <h3 class="widget-title">其它</h3>
+                        <ul class="widget-list">
+                            <if condition="$auth.islogin">
+                                <li class="last"><a href="{:url('admin')}">进入后台 ({$auth.name})</a></li>
+                            <else />
+                                <li class="last"><a href="{:url('login')}">登录</a></li>
+                            </if>
+                            <li><a href="https://nb.cx">NBCX</a></li>
+                        </ul>
+                    </section>
+                </block>
+
+            </div><!-- end #sidebar -->
+
+        </div><!-- end .row -->
+    </div>
+</div><!-- end #body -->
+
+<footer id="footer" role="contentinfo">
+    <block name="footer">
+    &copy; 2018 <a href="http://sblog.nb.cx/">Sblog</a>.由 <a href="https://nb.cx">NB Framework</a> 强力驱动.
+    </block>
+</footer><!-- end #footer -->
+
+</body>
+</html>

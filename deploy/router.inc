@@ -1,0 +1,36 @@
+<?php
+//路由配置
+return [
+    'index'=>[
+        'url'=>'/',
+        'action'=>'index'
+    ],
+    'admin'=>[
+        'url'=>'/admin',
+        'action'=>'admin/index/index'
+    ],
+    'login'=>[
+        'url'=>'/login',
+        'action'=>'admin/login/index'
+    ],
+    'logout'=>[
+        'url'=>'/logout',
+        'action'=>'admin/logout/post'
+    ],
+    'upload'=>[
+        'url'=>'/upload',
+        'action'=>'admin/upload/index'
+    ],
+    'post'=>[
+        'url'=>'/post/[id:digital].htm',
+        'action'=>'post'
+    ],
+    'page'=>[
+        'url'=>'/page/[id:digital].htm',
+        'action'=>'page'
+    ],
+    'classify'=>[
+        'url'=>'/classify/[slug:alphaslash].htm',
+        'action'=>'index/archive'
+    ]
+];
